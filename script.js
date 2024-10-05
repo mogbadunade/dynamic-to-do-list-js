@@ -18,18 +18,20 @@
                 }
     
                 // Create a new list item
-                const li = document.createElement('li');
-                li.textContent = taskText;
+                if(taskText !== "") {
+                    const li = document.createElement('li');
+                    li.textContent = taskText;
+                }
     
                 // Create a remove button
                 const removeButton = document.createElement('button');
                 removeButton.textContent = "Remove";
-                removeButton.className = 'remove-btn';
+                removeButton.classList.add('remove-btn');
     
                 // Add click event to remove the task
-                removeButton.onclick = function() {
+                removeButton.onclick(()=>{
                     taskList.removeChild(li);
-                };
+                });
     
                 // Append the remove button to the list item
                 li.appendChild(removeButton);
@@ -39,7 +41,6 @@
                 taskInput.value = '';
             }
     
-
             // Allow adding tasks by pressing Enter key
             taskInput.addEventListener('keypress', function(event) {
                 if (event.key === 'Enter') {
